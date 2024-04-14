@@ -159,10 +159,20 @@ void broadcast(const String &message)
 
 void IRAM_ATTR sendCmd1(){
   scheduleCmd1Send = true;
+  if(levelSet == false){
+    level = 1;
+    levelSet = true;
+    textSetup();
+  }
 }
 
 void IRAM_ATTR sendCmd2(){
   scheduleCmd2Send = true;
+  if(levelSet == false){
+    level = 2;
+    levelSet = true;
+    textSetup();
+  }
 }
 
 void IRAM_ATTR onAskReqTimer(){
@@ -241,7 +251,7 @@ void setup()
 {
   Serial.begin(115200);
 
-  textSetup();
+  //textSetup();
   buttonSetup();
   espnowSetup();
 
@@ -256,11 +266,11 @@ String genCommand(){
     noun1 = commandNounsFirst1[random(ARRAY_SIZE)];
     noun2 = commandNounsSecond1[random(ARRAY_SIZE)];
   }
-  else{
-    verb = commandVerbs2[random(ARRAY_SIZE)];
-    noun1 = commandNounsFirst2[random(ARRAY_SIZE)];
-    noun2 = commandNounsSecond2[random(ARRAY_SIZE)];
-  }
+  // else{
+  //   verb = commandVerbs2[random(ARRAY_SIZE)];
+  //   noun1 = commandNounsFirst2[random(ARRAY_SIZE)];
+  //   noun2 = commandNounsSecond2[random(ARRAY_SIZE)];
+  // }
 
   return verb + " " + noun1 + noun2;
 }
@@ -277,21 +287,12 @@ void drawControls(){
 
 void loop()
 {
-  
-  if (!levelSet){
-    if (scheduleCmd1Send){
-      level = 1;
-      expireLength = expireLength1;
-      levelSet = true;
-    }
-    if (scheduleCmd2Send){
-      level = 2;
-      expireLength = expireLength2;
-      levelSet = true;
-    }
-    timerSetup(expireLength);
-
+  if(levelSet == false){
+    delay(5000);
   }
+  timerSetup(20);
+
+
 
   if (scheduleCmd1Send){
     broadcast("D: "+cmd1);
