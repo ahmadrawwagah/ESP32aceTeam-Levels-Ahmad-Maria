@@ -45,17 +45,17 @@ String commandVerbs[ARRAY_SIZE];
 String commandNounsFirst[ARRAY_SIZE];
 String commandNounsSecond[ARRAY_SIZE];
 
-const String commandVerbs1[ARRAY_SIZE] = {"poop","fart","poop", "fart","poop", "fart","poop", "fart","poop", "fart"};
-const String commandNounsFirst1[ARRAY_SIZE] = {"pee","peep","pee","peep","pee","peep","pee","peep","pee","peep"};
-const String commandNounsSecond1[ARRAY_SIZE] = {"hai", "poo","hai", "poo","hai", "poo","hai", "poo","hai", "poo"};
+const String commandVerbs1[ARRAY_SIZE] = {"Buzz", "Engage", "Floop", "Bother", "Twist", "Jingle", "Jangle", "Yank", "Press", "Play"};
+const String commandNounsFirst1[ARRAY_SIZE] = {"foo", "dev", "bobby", "jaw", "tooty", "wu", "fizz", "rot", "tea", "bee"};
+const String commandNounsSecond1[ARRAY_SIZE] = {"bars", "ices", "pins", "nobs", "zops", "tangs", "bells", "wels", "pops", "bops"};
 
-const String commandVerbs2[ARRAY_SIZE] = {"Buzz", "Engage", "Floop", "Bother", "Twist", "Jingle", "Jangle", "Yank", "Press", "Play"};
-const String commandNounsFirst2[ARRAY_SIZE] = {"foo", "dev", "bobby", "jaw", "tooty", "wu", "fizz", "rot", "tea", "bee"};
-const String commandNounsSecond2[ARRAY_SIZE] = {"bars", "ices", "pins", "nobs", "zops", "tangs", "bells", "wels", "pops", "bops"};
+const String commandVerbs2[ARRAY_SIZE] = {"Bu#zz", "Eng@age", "Flo%op", "Bot&her", "Twist", "Jin'gle", "Ja.ngle", "Yan?k", "P\ress", "Pl/ay"};
+const String commandNounsFirst2[ARRAY_SIZE] = {"f=oo", "de-v", "bob_by", "j(aw", "too)ty", "wu", "fizz", "ro[t", "te{a", "be]e"};
+const String commandNounsSecond2[ARRAY_SIZE] = {"ba/rs", "ice>s", "pi<ns", "n,obs", "zo]ps", "tan[gs", "bel=ls", "3els", "p4ops", "bop5s"};
 
-const String commandVerbs3[ARRAY_SIZE] = {"Buzz", "Engage", "Floop", "Bother", "Twist", "Jingle", "Jangle", "Yank", "Press", "Play"};
-const String commandNounsFirst3[ARRAY_SIZE] = {"foo", "dev", "bobby", "jaw", "tooty", "wu", "fizz", "rot", "tea", "bee"};
-const String commandNounsSecond3[ARRAY_SIZE] = {"bars", "ices", "pins", "nobs", "zops", "tangs", "bells", "wels", "pops", "bops"};
+const String commandVerbs3[ARRAY_SIZE] = {"@","#","!", "%","^", "&","*", "(",")", "_"};
+const String commandNounsFirst3[ARRAY_SIZE] = {"+","|","}","{",";",":","{","-","=","\\"};
+const String commandNounsSecond3[ARRAY_SIZE] = {"'", "/","?", ".",",", "<",">", "~","`", "8"};
 
 int lineHeight = 30;
 
@@ -237,15 +237,22 @@ void timerSetup(int expireLength){
 
 }
 void levelSetup(){
+  int start_time = millis();
   while(true){
-    if (scheduleCmd1Send){
+    if ((millis() - start_time) > 5000)
+    {
       level = 1;
       expireLength = expireLength1;
       break;
     }
-    else if(scheduleCmd2Send){
+    else if (scheduleCmd1Send){
       level = 2;
       expireLength = expireLength2;
+      break;
+    }
+    else if(scheduleCmd2Send){
+      level = 3;
+      expireLength = expireLength3;
       break;
     }
 
@@ -276,6 +283,11 @@ String genCommand(){
      verb = commandVerbs2[random(ARRAY_SIZE)];
      noun1 = commandNounsFirst2[random(ARRAY_SIZE)];
      noun2 = commandNounsSecond2[random(ARRAY_SIZE)];
+  }
+  if(level == 3){
+     verb = commandVerbs3[random(ARRAY_SIZE)];
+     noun1 = commandNounsFirst3[random(ARRAY_SIZE)];
+     noun2 = commandNounsSecond3[random(ARRAY_SIZE)];
   }
 
   return verb + " " + noun1 + noun2;
