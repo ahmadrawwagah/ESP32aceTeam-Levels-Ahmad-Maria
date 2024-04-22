@@ -17,19 +17,25 @@ https://docs.google.com/document/d/1vphklPqY_keQlNk1hVz_C3Pq45uIHXlx6fpNlm-N9_k/
 **Level 1 dictionary:**
 
 const String commandVerbs1[ARRAY_SIZE] = {"Buzz", "Engage", "Floop", "Bother", "Twist", "Jingle", "Jangle", "Yank", "Press", "Play"};
+
 const String commandNounsFirst1[ARRAY_SIZE] = {"foo", "dev", "bobby", "jaw", "tooty", "wu", "fizz", "rot", "tea", "bee"};
+
 const String commandNounsSecond1[ARRAY_SIZE] = {"bars", "ices", "pins", "nobs", "zops", "tangs", "bells", "wels", "pops", "bops"};
 
 **Level 2 dictionary:**
 
 const String commandVerbs2[ARRAY_SIZE] = {"Bu#zz", "Eng@age", "Flo%op", "Bot&her", "Twist", "Jin'gle", "Ja.ngle", "Yan?k", "P\ress", "Pl/ay"};
+
 const String commandNounsFirst2[ARRAY_SIZE] = {"f=oo", "de-v", "bob_by", "j(aw", "too)ty", "wu", "fizz", "ro[t", "te{a", "be]e"};
+
 const String commandNounsSecond2[ARRAY_SIZE] = {"ba/rs", "ice>s", "pi<ns", "n,obs", "zo]ps", "tan[gs", "bel=ls", "3els", "p4ops", "bop5s"};
 
 **Level 3 dictionary:**
 
 const String commandVerbs3[ARRAY_SIZE] = {"@","#","!", "%","^", "&","*", "(",")", "_"};
+
 const String commandNounsFirst3[ARRAY_SIZE] = {"+","|","}","{",";",":","{","-","=","\\"};
+
 const String commandNounsSecond3[ARRAY_SIZE] = {"'", "/","?", ".",",", "<",">", "~","`", "8"};
 
 **Code Changes:**
