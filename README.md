@@ -32,4 +32,11 @@ const String commandVerbs3[ARRAY_SIZE] = {"¡", "ž", "Ÿ", "¡", "¢", "£", "�
 const String commandNounsFirst3[ARRAY_SIZE] = {"¨", "©", "ª", "«", "¬", "®", "¯", "°", "±", "²"};
 const String commandNounsSecond3[ARRAY_SIZE] = {"³", "µ", "¶", "¸", "¿", "Æ", "Ø", "ÿ", "þ", "÷"};
 
+**Code Changes:**
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
+
 
