@@ -39,6 +39,7 @@ const String commandNounsFirst3[ARRAY_SIZE] = {"+","|","}","{",";",":","{","-","
 const String commandNounsSecond3[ARRAY_SIZE] = {"'", "/","?", ".",",", "<",">", "~","`", "8"};
 
 **Code Changes:**
+
 Added a setup function in order to handle setting the level at the beginning of runtime. Functionality is as explained above.
 ```
 void levelSetup(){
